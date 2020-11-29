@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Spammer Assistant</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="https://img.icons8.com/nolan/64/html-filetype.png"
+    />
+  </head>
+  <body style="font-family: 'Fira Code', serif; background-color: #262223">
+    <div class="d-flex align-items-center" id="root" style="min-height: 100vh">
+      <div class="container flex-column">
+        <h1
+          class="h1 d-flex justify-content-center"
+          style="font-weight: bold; color: #ddc6b6"
+
+        >
+          Cool Website &nbsp;<span style="color: aqua">Admin</span>
+        </h1>
+        <div class="card d-flex" style="background-color: #ddc6b6">
+          <div
+            class="d-flex flex-row card-body"
+            style="min-height: 60vh; max-height: 60vh"
+          >
+            <div class="card w-50" id="traningContent" style="min-width: unset"></div>
+            <div class="card d-flex flex-grow-1" id="addressContent"></div>
+
+          </div>
+        </div>
+      </div>
+      <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+        crossorigin="anonymous"
+      />
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"
+      ></script>
+      <script>
+        $(function () {
+          $("#traningContent").load("../web/traning.html");
+          $("#addressContent").load("../web/address.html");
+        });
+      </script>
+    </div>
+  </body>
+</html>
