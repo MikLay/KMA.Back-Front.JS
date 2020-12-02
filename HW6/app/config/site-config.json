@@ -1,0 +1,23 @@
+{
+  "name": "Круті тренінги",
+  "domain": "cooltraining.com.ua",
+  "mainPageImg": "https://www.elegantthemes.com/blog/wp-content/uploads/2020/02/000-Online-Code-Editors.png",
+  "mColor": "#008080",
+  "mItems": {
+    "main": {
+      "name": "ГОЛОВНА",
+      "href": "/",
+      "statusClass": "in-active"
+    },
+    "courses": {
+      "name": "ТРЕНІНГИ",
+      "href": "/courses",
+      "statusClass": "in-active"
+    },
+    "info": {
+      "name": "ПРО НАС",
+      "href": "/about",
+      "statusClass": "in-active"
+    }
+  }
+}
