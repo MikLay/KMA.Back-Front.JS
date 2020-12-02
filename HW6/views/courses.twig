@@ -1,0 +1,64 @@
+{% extends "../client.twig" %}
+{% block content %}
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js">
+    </script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js">
+    </script>
+
+    <div id="coursesList" class="d-flex flex-column">
+
+    </div>
+    <script type="text/babel">
+        class Courses extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    courses: [],
+                };
+            }
+
+            loadPosts() {
+                fetch("/api/tranings")
+                    .then((resp) => resp.json())
+                    .then((resp) => {
+                        console.log(resp);
+                        this.setState((state) => ({courses: resp}));
+                    });
+            }
+
+            componentDidMount() {
+                this.loadPosts();
+            }
+
+
+            render() {
+                if (this.state.courses) {
+                    return (
+                        this.state.courses.map((course, index) => (
+                            <div className="card">
+                                <div className="card-body">
+                                    <div className="card-title h1">{course.title}</div>
+                                    <p className="card-text">{course.shortDescr}</p>
+                                    <a class="btn btn-primary" data-toggle="collapse" href={`#${index+"ad"}`} role="button" aria-expanded="false" aria-controls={index+"ad"}>
+                                        Link with href
+                                    </a>
+                                    <div class="collapse" id={index+"ad"}>
+                                        <div class="card card-body">
+                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    );
+                } else {
+                    return <div>Loading...</div>;
+                }
+            }
+        }
+
+        ReactDOM.render(<Courses></Courses>, document.getElementById("coursesList"));
+    </script>
+{% endblock %}
+
