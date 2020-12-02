@@ -1,0 +1,39 @@
+<div class="d-flex flex-md-row justify-content-between p-3 px-md-4 mb-3 shadow-sm header-container">
+    <div class="d-flex flex-md-row align-items-center">
+        <h5 class="my-0 font-weight-bold">{{ domain }} |</h5>
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-right-circle m-2" fill="currentColor"
+             xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path fill-rule="evenodd"
+                  d="M5.172 5.172a.5.5 0 0 1 .707 0l4.096 4.096V6.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H6.5a.5.5 0 0 1 0-1h2.768L5.172 5.879a.5.5 0 0 1 0-.707z"/>
+        </svg>
+        <nav class="my-2 my-md-0 mr-md-3 align-content-start">
+            {% for item in mItems %}
+                <a class="p-2 font-weight-bold nav-items {{ item.statusClass }}" href="{{ item.href }}">{{ item.name }}</a>
+            {% endfor %}
+        </nav>
+    </div>
+    <div class="d-flex flex-row">
+        <a class="btn text-white font-weight-bold" href="#">ENG</a>
+        <a class="btn text-white font-weight-bold" href="#">UKR</a>
+    </div>
+</div>
+<style>
+    .header-container {
+        background-color: {{  mColor  }};
+        color: #ffff;
+    }
+
+    .nav-items:hover {
+        color: #ffff;
+        text-decoration: unset;
+    }
+
+    .active {
+        color: #ffff;
+    }
+
+    .in-active {
+        color: #929191;
+    }
+</style>
