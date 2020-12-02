@@ -14,7 +14,6 @@
         <h1
           class="h1 d-flex justify-content-center"
           style="font-weight: bold; color: #ddc6b6"
-
         >
           Cool Website &nbsp;<span style="color: aqua">Admin</span>
         </h1>
@@ -23,9 +22,12 @@
             class="d-flex flex-row card-body"
             style="min-height: 60vh; max-height: 60vh"
           >
-            <div class="card w-50" id="traningContent" style="min-width: unset"></div>
+            <div
+              class="card w-50"
+              id="traningContent"
+              style="min-width: unset"
+            ></div>
             <div class="card d-flex flex-grow-1" id="addressContent"></div>
-
           </div>
         </div>
       </div>
@@ -48,8 +50,8 @@
       ></script>
       <script>
         $(function () {
-          $("#traningContent").load("../web/traning.html");
-          $("#addressContent").load("../web/address.html");
+          $("#traningContent").load("../views/traning.html");
+          $("#addressContent").load("../views/address.html");
         });
       </script>
     </div>

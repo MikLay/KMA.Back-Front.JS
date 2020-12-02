@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const dbConfig = require("./app/config/db.config");
 const db = require("./app/models");
+const twig = require("twig");
 
 const app = express();
 
@@ -14,14 +15,13 @@ let corsOptions = {
 app.use(cors(corsOptions));
 
 app.set("view engine", "twig");
-app.set("views", ".");
+app.engine("twig", twig.__express);
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 db.mongoose
   .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
@@ -36,7 +36,6 @@ db.mongoose
     process.exit();
   });
 
-
 // routes
 require("./app/routes/main.routes")(app);
 require("./app/routes/address.routes")(app);
@@ -48,6 +47,5 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
-
 
 app.use(express.static(__dirname));
