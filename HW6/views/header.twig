@@ -9,19 +9,43 @@
         </svg>
         <nav class="my-2 my-md-0 mr-md-3 align-content-start">
             {% for item in mItems %}
-                <a class="p-2 font-weight-bold nav-items {{ item.statusClass }}" href="{{ item.href }}">{{ item.name }}</a>
+                <a lang="ukr" class="p-2 font-weight-bold nav-items {{ item.statusClass }}"
+                   href="{{ item.href }}">{{ item.name.ukr }}</a>
+                <a lang="eng"
+                   class="p-2 font-weight-bold nav-items {{ item.statusClass }}"
+                   href="{{ item.href }}">{{ item.name.eng }}</a>
             {% endfor %}
         </nav>
     </div>
     <div class="d-flex flex-row">
-        <a class="btn text-white font-weight-bold" href="#">ENG</a>
-        <a class="btn text-white font-weight-bold" href="#">UKR</a>
+        <a class="btn text-white font-weight-bold" onclick="select_language('eng')" href="#">ENG</a>
+        <a class="btn text-white font-weight-bold" onclick="select_language('ukr')" href="#">UKR</a>
     </div>
 </div>
+<script>
+
+
+
+
+    function select_language(language) {
+        $("[lang]").each(function () {
+            if ($(this).attr("lang").includes(language))
+                $(this).show();
+            else
+                $(this).hide();
+        });
+    }
+
+
+</script>
 <style>
     .header-container {
         background-color: {{  mColor  }};
         color: #ffff;
+    }
+
+    .nav-items {
+        text-transform: uppercase;
     }
 
     .nav-items:hover {

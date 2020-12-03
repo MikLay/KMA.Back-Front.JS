@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="ukr-eng">
 <head>
     <meta charset="UTF-8"/>
     <title>{{ name }}</title>
@@ -26,7 +26,7 @@
             crossorigin="anonymous"
     ></script>
 </head>
-<body style="font-family: 'Fira Code', serif; background-color: #ffff">
+<body onload="select_language('ukr')" style="font-family: 'Fira Code', serif; background-color: #ffff">
 
 {% include 'header.twig' %}
 <div class="d-flex flex-row m-3">
@@ -34,61 +34,77 @@
     <div class="col-4 myForm">
         <form class="needs-validation" novalidate>
             <div class="flex-row">
-                <div class="col mb-3"><h5 class="h5 form-header text-uppercase">Форма заявки</h5></div>
+                <div class="col mb-3">
+                    <h5 class="h5 form-header text-uppercase" lang="ukr">Форма заявки</h5>
+                    <h5 class="h5 form-header text-uppercase" lang="eng">Application form</h5>
+                </div>
             </div>
             <div class="flex-row">
                 <div class="col mb-3">
-                    <label for="firstName">Ваше ім'я</label>
+                    <label for="firstName" lang="ukr">Ваше ім'я</label>
+                    <label for="firstName" lang="eng">Name</label>
                     <input type="text" class="form-control" id="firstName" placeholder="Введіть Ваше Ім'я" value=""
                            required>
                     <div class="invalid-feedback">
-                        Поле з іменем має бути заповненим
+                        <span lang="ukr">Поле з іменем має бути заповненим</span>
+                        <span lang="eng">The name field must be filled</span>
                     </div>
+
                 </div>
             </div>
             <div class="flex-row">
                 <div class="col mb-3">
-                    <label for="secondName">Ваше прізвище</label>
+                    <label for="secondName" lang="ukr">Ваше прізвище</label>
+                    <label for="secondName" lang="eng">Surname</label>
                     <input type="text" class="form-control" id="secondName" placeholder="Введіть Ваше прізвище" value=""
                            required="">
                     <div class="invalid-feedback">
-                        Поле з прізвищем має бути заповненим.
+                        <span lang="ukr">Поле з прізвищем має бути заповненим.</span>
+                        <span lang="eng">The last name field must be filled.</span>
                     </div>
                 </div>
             </div>
             <div class="flex-row">
                 <div class="col mb-3">
-                    <label for="email">Ваш e-mail</label>
+                    <label for="email" lang="ukr">Ваш e-mail</label>
+                    <label for="email" lang="eng">E-mail</label>
                     <input type="email" class="form-control" id="email" placeholder="Введіть Ваш e-mail" value=""
                            required="">
                     <div class="invalid-feedback">
-                        Поле email має бути коректно заповнено.
+                        <span lang="ukr">Поле email має бути коректно заповнено.</span>
+                        <span lang="eng">The email field must be filled in correctly.</span>
                     </div>
+
                 </div>
             </div>
             <div class="flex-row">
                 <div class="col mb-3">
-                    <label for="phone">Телефон (формат: +38(xxx)xxxxxxx )</label>
+                    <label for="phone" lang="ukr">Телефон (формат: +38(xxx)xxxxxxx )</label>
+                    <label for="phone" lang="eng">Phone (format: +38(xxx)xxxxxxx )</label>
                     <input type="tel" class="form-control" id="phone" placeholder="Введіть Ваш телефон" value=""
                            pattern="^\+38\(\d{3}\)\d{7}$" required>
                     <div class="invalid-feedback">
-                        Поле телефону має бути заповнене.
+                        <span lang="ukr">Поле телефону має бути заповнене.</span>
+                        <span lang="eng">The phone field must be filled.</span>
                     </div>
                 </div>
             </div>
             <div class="flex-row">
                 <div class="col mb-3">
-                    <label for="extraText">Текст заявки</label>
+                    <label for="extraText" lang="ukr">Текст заявки</label>
+                    <label for="extraText" lang="eng">The text of the application</label>
                     <textarea class="form-control" id="extraText" placeholder="" value=""
                               required=""></textarea>
                     <div class="invalid-feedback">
-                        Поле тексту заявки має бути заповненим.
+                        <span lang="ukr">Поле тексту заявки має бути заповненим.</span>
+                        <span lang="eng">The text field of the application must be filled.</span>
                     </div>
                 </div>
             </div>
             <div class="flex-row">
                 <div class="col mb-3">
-                    <button type="submit" class="btn btn-success btn btn-block text-uppercase">Подати заявку</button>
+                    <button type="submit" class="btn btn-success btn btn-block text-uppercase"><span lang="ukr">Подати заявку</span><span
+                                lang="eng">Submit application</span></button>
                 </div>
             </div>
         </form>
@@ -96,13 +112,15 @@
 </div>
 <div class="d-flex flex-row justify-content-center">
     <div id="adminToast" class="toast" data-autohide="true" data-delay="2000">
-        <div class="toast-body">
-            Заявка направлена на підтвердження адміністратору!
+        <div class="toast-body bg-success">
+            <span lang="ukr">Заявка направлена на підтвердження адміністратору!</span>
+            <span lang="eng">The application is sent for confirmation to the administrator!</span>
         </div>
     </div>
     <div id="clientToast" class="toast" data-autohide="true" data-delay="2000">
-        <div class="toast-body">
-            Лист надіслано Вам на пошту!
+        <div class="toast-body bg-success">
+            <span lang="ukr">Лист надіслано Вам на пошту!</span>
+            <span lang="eng">The letter was sent to you by mail!</span>
         </div>
     </div>
 </div>
@@ -163,6 +181,7 @@
     .myForm {
         border: 2px {{ mColor }} solid;
         padding: 8px 0 8px 0;
+        display: inline-table;
     }
 
     .form-header {

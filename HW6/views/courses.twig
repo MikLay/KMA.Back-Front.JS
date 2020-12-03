@@ -5,10 +5,6 @@
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js">
     </script>
-
-    <div id="coursesList" class="d-flex flex-column">
-
-    </div>
     <script type="text/babel">
         class Courses extends React.Component {
             constructor(props) {
@@ -38,14 +34,19 @@
                         this.state.courses.map((course, index) => (
                             <div className="card">
                                 <div className="card-body">
-                                    <div className="card-title h1">{course.title}</div>
+                                    <div className="card-title {{ mColor }} h1">{course.title}</div>
                                     <p className="card-text">{course.shortDescr}</p>
-                                    <a class="btn btn-primary" data-toggle="collapse" href={`#${index+"ad"}`} role="button" aria-expanded="false" aria-controls={index+"ad"}>
-                                        Link with href
+                                    <a class="btn btn-info" lang="ukr" data-toggle="collapse" href="#sad"
+                                       role="button" aria-expanded="false" aria-controls="sad">
+                                        Детальніше...
                                     </a>
-                                    <div class="collapse" id={index+"ad"}>
+                                    <a class="btn btn-info" lang="eng" data-toggle="collapse" href="#sad"
+                                       role="button" aria-expanded="false" aria-controls="sad">
+                                        Details...
+                                    </a>
+                                    <div class="collapse" id="sad">
                                         <div class="card card-body">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                            {course.descr}
                                         </div>
                                     </div>
                                 </div>
@@ -59,6 +60,12 @@
         }
 
         ReactDOM.render(<Courses></Courses>, document.getElementById("coursesList"));
+
     </script>
+
+
+    <div id="coursesList" class="d-flex flex-column">
+    </div>
+
 {% endblock %}
 

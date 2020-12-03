@@ -5,17 +5,26 @@
   "mColor": "#008080",
   "mItems": {
     "main": {
-      "name": "ГОЛОВНА",
+      "name": {
+        "ukr": "головна",
+        "eng": "main"
+      },
       "href": "/",
       "statusClass": "in-active"
     },
     "courses": {
-      "name": "ТРЕНІНГИ",
+      "name": {
+        "ukr": "тренінги",
+        "eng": "courses"
+      },
       "href": "/courses",
       "statusClass": "in-active"
     },
     "info": {
-      "name": "ПРО НАС",
+      "name": {
+        "ukr": "про нас",
+        "eng": "about us"
+      },
       "href": "/about",
       "statusClass": "in-active"
     }
