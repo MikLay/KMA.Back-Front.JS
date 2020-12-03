@@ -48,8 +48,8 @@
             </div>
             <div class="flex-row">
                 <div class="col mb-3">
-                    <label for="SecondName">Ваше прізвище</label>
-                    <input type="text" class="form-control" id="SecondName" placeholder="Введіть Ваше прізвище" value=""
+                    <label for="secondName">Ваше прізвище</label>
+                    <input type="text" class="form-control" id="secondName" placeholder="Введіть Ваше прізвище" value=""
                            required="">
                     <div class="invalid-feedback">
                         Поле з прізвищем має бути заповненим.
@@ -70,7 +70,7 @@
                 <div class="col mb-3">
                     <label for="phone">Телефон (формат: +38(xxx)xxxxxxx )</label>
                     <input type="tel" class="form-control" id="phone" placeholder="Введіть Ваш телефон" value=""
-                          pattern="^\+38\(\d{3}\)\d{7}$" required>
+                           pattern="^\+38\(\d{3}\)\d{7}$" required>
                     <div class="invalid-feedback">
                         Поле телефону має бути заповнене.
                     </div>
@@ -94,18 +94,63 @@
         </form>
     </div>
 </div>
+<div class="d-flex flex-row justify-content-center">
+    <div id="adminToast" class="toast" data-autohide="true" data-delay="2000">
+        <div class="toast-body">
+            Заявка направлена на підтвердження адміністратору!
+        </div>
+    </div>
+    <div id="clientToast" class="toast" data-autohide="true" data-delay="2000">
+        <div class="toast-body">
+            Лист надіслано Вам на пошту!
+        </div>
+    </div>
+</div>
+</div>
 <script>
-    (function() {
+
+    (function () {
         'use strict';
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             // Fetch all the forms we want to apply custom Bootstrap validation styles to
             var forms = document.getElementsByClassName('needs-validation');
             // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
                     if (form.checkValidity() === false) {
                         event.preventDefault();
                         event.stopPropagation();
+                    } else {
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/api/addresses",
+                            dataType: "json",
+                            data: JSON.stringify({
+                                name: $(this).find("[id=firstName]").val(),
+                                surname: $(this).find("[id=secondName]").val(),
+                                email: $(this).find("[id=email]").val(),
+                                phone: $(this).find("[id=phone]").val(),
+                                text: $(this).find("[id=extraText]").val(),
+                            }),
+                            beforeSend: function (xhr) {
+                                xhr.setRequestHeader("Content-Type", "application/json");
+                            },
+                            success: (resp) => {
+                                if (resp.status !== "false") {
+                                    $('#clientToast').toast('show');
+                                } else {
+                                    console.log(resp);
+                                    $('#adminToast').toast('show');
+                                }
+
+                            },
+                            error: function (xhr) {
+                                console.log(xhr.responseJSON);
+                            },
+                        });
                     }
                     form.classList.add('was-validated');
                 }, false);
@@ -116,7 +161,7 @@
 </body>
 <style>
     .myForm {
-        border: 2px {{ mColor }} solid ;
+        border: 2px {{ mColor }} solid;
         padding: 8px 0 8px 0;
     }
 
